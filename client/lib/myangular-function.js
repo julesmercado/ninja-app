@@ -1,12 +1,12 @@
 var appModule = angular.module('myApp', []);
-var host = '192.168.1.42:8080/ninja/time/in'
+var host = 'http://192.168.1.42:8080/ninja/time/in'
 
 /*** Factory ***/
 
 appModule.factory('loginFactory', function ($http) {
 	return {
 		getHeroModel : function () {
-			return $http.get('lib/heromodel.json').then( function (result) {
+			return $http.get('/static/lib/heromodel.json').then( function (result) {
 				return result.data;
 			});
 		}
