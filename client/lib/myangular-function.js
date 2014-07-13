@@ -84,8 +84,9 @@ appModule.controller('registrationController', function ( $scope , registerHeroF
 	$scope.registerHero = function ( heroInfo ) {
 		
 		$params = $.param({
-			"id" 	:  heroInfo.id,
-			"name"	: heroInfo.name
+			"id" 		:  heroInfo.id,
+			"name"		: heroInfo.name,
+			"position"	: heroInfo.position
 		});
 
 		registerHeroFactory.registerYourHero($params);
