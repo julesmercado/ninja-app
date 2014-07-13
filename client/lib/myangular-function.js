@@ -24,6 +24,19 @@ appModule.factory('timeInFactory' , function ($http) {
 			});
 		}
 	}
+
+});
+
+appModule.factory('registerHeroFactory', function ($http) {
+	return {
+		registerYourHero : function ( $heroRegisterInformation ) {
+			return $http({
+				url 	:  host,
+				method 	: 'POST',
+				data    : $heroRegisterInformation
+			});
+		}
+	}
 });
 
 
@@ -64,3 +77,17 @@ appModule.controller('loginController', function ($scope, loginFactory) {
 
 });
 
+
+appModule.controller('registrationController', function ( $scope , registerHeroFactory ) {
+	$scope.heroInfo = {};
+	
+	$scope.registerHero = function ( heroInfo ) {
+		
+		$params = $.param({
+			"id" 	:  heroInfo.id,
+			"name"	: heroInfo.name
+		});
+
+		registerHeroFactory.registerYourHero($params);
+	}
+});
