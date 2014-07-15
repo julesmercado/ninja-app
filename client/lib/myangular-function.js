@@ -1,12 +1,14 @@
 var appModule = angular.module('myApp', []);
-var host = 'http://192.168.1.42:8080/ninja/time/in'
+var host = 'http://192.168.1.42:8080/ninja/time/in';
+var production_location = '/static/lib/heromodel.json';
+
 
 /*** Factory ***/
 
 appModule.factory('loginFactory', function ($http) {
 	return {
 		getHeroModel : function () {
-			return $http.get('/static/lib/heromodel.json').then( function (result) {
+			return $http.get('lib/heromodel.json').then( function (result) {
 				return result.data;
 			});
 		}
@@ -16,11 +18,17 @@ appModule.factory('loginFactory', function ($http) {
 
 appModule.factory('timeInFactory' , function ($http) {
 	return {
-		timeInHero : function ( $heroTimeIn ) {
+		timeInHero : function ( $heroTimeIn , callback) {
 			return $http({
 				url		: host,		
 				method  : 'POST',
 				data 	: $heroTimeIn
+			})
+			.success(function (data) {
+				callback(null, data);
+			})
+			.error(function (error) {
+				callback(error);
 			});
 		}
 	}
@@ -29,11 +37,17 @@ appModule.factory('timeInFactory' , function ($http) {
 
 appModule.factory('registerHeroFactory', function ($http) {
 	return {
-		registerYourHero : function ( $heroRegisterInformation ) {
+		registerYourHero : function ( $heroRegisterInformation , callback) {
 			return $http({
 				url 	:  host,
 				method 	: 'POST',
 				data    : $heroRegisterInformation
+			})
+			.success(function (data) {
+				callback(null, data);
+			})
+			.error(function (error) {
+				callback(error);
 			});
 		}
 	}
@@ -72,7 +86,13 @@ appModule.controller('loginController', function ($scope, loginFactory) {
 			
 		});
 
-		timeInFactory.timeInHero($params);
+		timeInFactory.timeInHero($params,  function(error, Data) {
+			if(error) {
+				alert(error);
+			} else {
+				alert(data);
+			}
+		});
 	}
 
 });
@@ -89,6 +109,12 @@ appModule.controller('registrationController', function ( $scope , registerHeroF
 			"position"	: heroInfo.position
 		});
 
-		registerHeroFactory.registerYourHero($params);
+		registerHeroFactory.registerYourHero($params, function(error, data) {
+			if(error) {
+				alert(error);
+			} else {
+				alert(data);
+			}
+		});
 	}
 });

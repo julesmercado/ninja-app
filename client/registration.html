@@ -28,24 +28,45 @@
     <![endif]-->
   </head>
   <body>
-    <section class="container" ng-controller="registrationController">
-        <form >
-          <label>Hero ID</label>
-          <input type="text" ng-model="heroInfo.id" /><br />
-          <label>Hero Name</label>
-          <input type="text" ng-model="heroInfo.name" /><br />
-          <input type="submit" value="Register Hero" ng-click="registerHero(heroInfo)" />
+  <section class="container" ng-controller="registrationController">
+        <form class="form-horizontal" role="form" novalidate>
+
+          <div class="form-group">
+            <label for="inputHeroId" class="col-sm-2 control-label">Hero ID</label>
+             <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputHeroId" placeholder="Hero Identification" ng-model="heroInfo.id">
+             </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputHeroName" class="col-sm-2 control-label">Hero Name</label>
+             <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputHeroName" placeholder="Hero Name" ng-model="heroInfo.name">
+             </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputHeroPosition" class="col-sm-2 control-label">Hero Position</label>
+             <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputHeroPosition" placeholder="Hero Name" ng-model="heroInfo.position">
+             </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary" ng-click="registerHero(heroInfo)">Register Hero</button>
+            </div>
+          </div>
+  
         </form>
-        
-        <pre>master = {{ master | json }}</pre>
-    </section>
-<section class="footer">
-  <div class="container">
-    <div class="row">
-      <p>project ver 1.0</p>
+  </section>
+  <section class="footer">
+    <div class="container">
+      <div class="row">
+        <p>project ver 1.0</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
