@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hero Registration App :)</title>
 
-    <!-- FOR DEVELOPMENT 
+    <!-- FOR DEVELOPMENT -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
-    -->
+    
     
  
-    <!-- FOR PRODUCTION -->
+    <!-- FOR PRODUCTION 
     <link href="http://192.168.1.42:8080/static/css/bootstrap-theme.css" rel="stylesheet">
     <link href="http://192.168.1.42:8080/static/css/bootstrap.min.css" rel="stylesheet">
-    
+    -->
 
 
 
@@ -40,9 +40,10 @@
                       <section class="col-sm-6 col-md-3 col-lg-3" ng-repeat="hero in heroModel">
                        <p class="hero-details">
                          <a href="#">
-                         <img src="http://placekitten.com/g/500/500" alt="Select Hero" class="img-circle" ng-click="timeIn(hero)">
+                         <img ng-if="hero.state=='in'" src="http://placekitten.com/g/500/500" alt="Select Hero" class="img-circle" ng-click="timeOut(hero)">
+                         <img ng-if="hero.state=='out'" src="http://placekitten.com/g/500/500" alt="Select Hero" class="img-circle" ng-click="timeIn(hero)">
                           </a>
-                         <br>
+                         <br><img src="http://placekitten.com/g/500/500" alt="Select Hero" class="img-circle" ng-click="timeIn(hero)">
                          <span class="name" ng-model = "hero.name">{{ hero.name }}</span>
                          <br>
                          <span class="position">{{ hero.position }}</span>
@@ -74,12 +75,12 @@
     <script src="lib/moment.js"></script>
     
       
-    <!-- FOR PRODUCTION -->
+    <!-- FOR PRODUCTION 
  <script src="http://192.168.1.42:8080/static/js/bootstrap.min.js"></script>
     <script src="http://192.168.1.42:8080/static/lib/angular.min.js"></script>
     <script src="http://192.168.1.42:8080/static/lib/myangular-function.js"></script>
     <script src="http://192.168.1.42:8080/static/lib/moment.js"></script>
-
+    -->
     
    </body>
 </html>
