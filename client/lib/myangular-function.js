@@ -1,8 +1,8 @@
 var appModule = angular.module('myApp', []);
-var hostHeroIn = 'http://{{host}}:{{port}}/ninja/time/in';
-var hostHeroOut = 'http://{{host}}:{{port}}/ninja/time/out';
-var hostRegistration = 'http://{{host}}:{{port}}/ninja/add';
-var productionLocation = '/static/lib/heromodel.json';
+var hostHeroIn = '/ninja/time/in';
+var hostHeroOut = '/ninja/time/out';
+var hostRegistration = '/ninja/add';
+var heroGetInformation = '/ninja/time/all';
 
 
 /*** Factory ***/
@@ -10,28 +10,13 @@ var productionLocation = '/static/lib/heromodel.json';
 appModule.factory('loginFactory', function ($http) {
 	return {
 		getHeroModel : function () {
-			return $http.get('lib/heromodel.json').then( function (result) {
+			return $http.get(heroGetInformation).then( function (result) {
 				return result.data;
 			});
 		}
 	}
 
 });
-
-/*appModule.factory('loginFactory', function ($http) {
-	return {
-		getHeroModel : function (callback) {
-			return $http.get('lib/heromodel.json')
-			.success(function (data) {
-				callback(null, data);
-			})
-			.error(function ( error ) {
-				callback(error);
-			});
-		}
-	}
-
-});*/
 
 appModule.factory('timeInFactory' , function ($http) {
 	return {
@@ -94,7 +79,7 @@ appModule.factory('registerHeroFactory', function ($http) {
 
 appModule.controller('loginController', function ($scope, loginFactory, timeInFactory, timeOutFactory) {
 
-	var state = null;
+
 	var dateAndTime = Date.now();
 
 	loginFactory.getHeroModel().then(function (heroModelList) {
@@ -102,10 +87,10 @@ appModule.controller('loginController', function ($scope, loginFactory, timeInFa
 		for(var heroKey in heroModelList){
 			if( "state" in heroModelList[heroKey] || heroModelList[heroKey] === "out"  ) {
 				heroModelList[heroKey].state = "in";
-				state = "in";
+				
 			} else {
 				heroModelList[heroKey].state = "out";
-				state = "out";
+				
 			}
 		}
 
@@ -118,8 +103,6 @@ appModule.controller('loginController', function ($scope, loginFactory, timeInFa
 			
 			$params = $.param({
 				"id" 			: heroInfo.id,
-				"name"  		: heroInfo.name,
-				"position"  	: heroInfo.position,
 				"dateAndTime" 	: dateAndTime,
 				"state"			: heroInfo.state
 			
@@ -138,8 +121,6 @@ appModule.controller('loginController', function ($scope, loginFactory, timeInFa
 		
 			$params = $.param({
 				"id" 			: heroInfo.id,
-				"name"  		: heroInfo.name,
-				"position"  	: heroInfo.position,
 				"dateAndTime" 	: dateAndTime,
 				"state"			: heroInfo.state
 			
@@ -160,15 +141,16 @@ appModule.controller('loginController', function ($scope, loginFactory, timeInFa
 
 appModule.controller('registrationController', function ( $scope , registerHeroFactory ) {
 	$scope.heroInfo = {};
-	
+	var dateAndTime = Date.now();	
 
 
 	$scope.registerHero = function ( heroInfo ) {
 		
 		$params = $.param({
-			"id" 		:  heroInfo.id,
-			"name"		: heroInfo.name,
-			"position"	: heroInfo.position
+			"id" 			:  heroInfo.id,
+			"name"			: heroInfo.name,
+			"position"		: heroInfo.position,
+			"registerOn"	: dateAndTime
 		});
 
 		registerHeroFactory.registerYourHero($params, function(errorMsg, data) {
