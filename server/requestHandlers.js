@@ -31,7 +31,7 @@ function indexs (response, postData, pathname,urlInfo) {
 	statics(response,postData,"/index.html",urlInfo);
 }
 
-function ninjaVeiwAdd (response, postData, pathname, urlInfo){
+function ninjaAddView (response, postData, pathname, urlInfo){
 	statics(response,postData,"/registration.html",urlInfo);
 }
 
@@ -190,5 +190,5 @@ exports.ninjaTimeOut = ninjaTimeOut;
 exports.ninjaTimeIn  = ninjaTimeIn;
 exports.statics      = statics;
 exports.ninjaAdd 	 = ninjaAdd;
-exports.ninjaVeiwAdd = ninjaVeiwAdd;
+exports.ninjaAddView = ninjaAddView;
 exports.ninjaCheck   = ninjaCheck;

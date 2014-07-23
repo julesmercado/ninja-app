@@ -17,7 +17,7 @@ var http            = require("http"),
 	requestHolder['/ninja/time/in']      = requestHandlers.ninjaTimeIn;
 	requestHolder['/ninja/time/out']     = requestHandlers.ninjaTimeOut;
 	requestHolder['/ninja/add'] 	     = requestHandlers.ninjaAdd;
-	requestHolder['/ninja/add/view']	 = requestHandlers.ninjaAddVeiw;
+	requestHolder['/ninja/add/view']	 = requestHandlers.ninjaAddView;
 	requestHolder['/ninja/check']	     = requestHandlers.ninjaCheck;
 
 var connections = os.networkInterfaces();
