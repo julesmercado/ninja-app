@@ -1,7 +1,7 @@
 var appModule = angular.module('myApp', []);
-var hostHeroIn = 'http://{{host}}:{{port}}/ninja/time/in';
-var hostHeroOut = 'http://{{host}}:{{port}}/ninja/time/out';
-var hostRegistration = 'http://{{host}}:{{port}}/ninja/add';
+var hostHeroIn = '/ninja/time/in';
+var hostHeroOut = '/ninja/time/out';
+var hostRegistration = '/ninja/add';
 var productionLocation = '/static/lib/heromodel.json';
 
 
@@ -10,7 +10,7 @@ var productionLocation = '/static/lib/heromodel.json';
 appModule.factory('loginFactory', function ($http) {
 	return {
 		getHeroModel : function () {
-			return $http.get('lib/heromodel.json').then( function (result) {
+			return $http.get('/ninja/all').then( function (result) {
 				return result.data;
 			});
 		}
