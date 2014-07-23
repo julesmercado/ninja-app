@@ -85,7 +85,7 @@ appModule.controller('loginController', function ($scope, loginFactory, timeInFa
 	loginFactory.getHeroModel().then(function (heroModelList) {
 		
 		for(var heroKey in heroModelList){
-			if( "state" in heroModelList[heroKey] || heroModelList[heroKey] === "out"  ) {
+			if( heroModelList[heroKey].state === "out" ||  heroModelList[heroKey].state === null  ) {
 				heroModelList[heroKey].state = "in";
 				
 			} else {
