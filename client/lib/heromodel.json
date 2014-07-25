@@ -3,117 +3,26 @@
 		"id" 		: 1,
 		"name" 		: "Raven Duran",
 		"position"  : "The Brain",
-		"state"		: null
+		"state"		: "out"
 
 	}, {
 
 		"id" 		: 2,
 		"name"    	: "Richieve Bebedor",
 		"position" 	: "World Dominator",
-		"state"		: null
+		"state"		: "in"
 
 	}, {
 
 		"id" 		: 3,
 		"name"      : "Logi Boy",
 		"position"  : "Creative Cheiftain",
-		"state"		: null
+		"state"		: "out"
 }, {
 
 		"id" 		: 4,
 		"name"    	: "Geoff Diaz",
 		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Geoff Diaz",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
-
-}, {
-
-		"id" 		: 5,
-		"name"    	: "Edsil",
-		"position"  : "Lover Programmer",
-		"state"		: null
+		"state"		: "in"
 
 }]

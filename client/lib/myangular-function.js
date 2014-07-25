@@ -2,7 +2,7 @@ var appModule = angular.module('myApp', []);
 var hostHeroIn = '/ninja/time/in';
 var hostHeroOut = '/ninja/time/out';
 var hostRegistration = '/ninja/add';
-var heroGetInformation = '/ninja/time/all';
+var heroGetInformation = '/ninja/all';
 
 
 /*** Factory ***/
@@ -85,7 +85,7 @@ appModule.controller('loginController', function ($scope, loginFactory, timeInFa
 	loginFactory.getHeroModel().then(function (heroModelList) {
 		
 		for(var heroKey in heroModelList){
-			if( heroModelList[heroKey].state === "out" ||  heroModelList[heroKey].state === null  ) {
+			if( heroModelList[heroKey].state === null || heroModelList[heroKey].state === 'out') {
 				heroModelList[heroKey].state = "in";
 				
 			} else {
@@ -95,18 +95,19 @@ appModule.controller('loginController', function ($scope, loginFactory, timeInFa
 		}
 
 		$scope.heroModel = heroModelList;
-	
+
+		
 	});
 
 
 		$scope.timeIn = function ( heroInfo ) {
-			
-			$params = $.param({
+	
+			$params = {
 				"id" 			: heroInfo.id,
 				"dateAndTime" 	: dateAndTime,
 				"state"			: heroInfo.state
 			
-			});
+			};
 
 			timeInFactory.timeInHero($params,  function(error, Data) {
 				if(error) {
@@ -118,13 +119,13 @@ appModule.controller('loginController', function ($scope, loginFactory, timeInFa
 		}
 	
 		$scope.timeOut = function ( heroInfo ) {
-		
-			$params = $.param({
+			
+			$params = {
 				"id" 			: heroInfo.id,
 				"dateAndTime" 	: dateAndTime,
 				"state"			: heroInfo.state
 			
-			});
+			};
 
 			timeOutFactory.timeOutHero($params,  function(error, Data) {
 				if(error) {
@@ -140,19 +141,16 @@ appModule.controller('loginController', function ($scope, loginFactory, timeInFa
 
 
 appModule.controller('registrationController', function ( $scope , registerHeroFactory ) {
-	$scope.heroInfo = {};
-	var dateAndTime = Date.now();	
-
+	$scope.heroInfo = {};	
 
 	$scope.registerHero = function ( heroInfo ) {
 		
-		$params = $.param({
+		$params = {
 			"id" 			:  heroInfo.id,
 			"name"			: heroInfo.name,
-			"position"		: heroInfo.position,
-			"registerOn"	: dateAndTime
-		});
-
+			"position"		: heroInfo.position
+			
+		};
 		registerHeroFactory.registerYourHero($params, function(errorMsg, data) {
 			if(errorMsg) {
 				alert(errorMsg.error);
